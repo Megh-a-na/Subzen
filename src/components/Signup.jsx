@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/Auth.css';
 
 function Signup() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -10,6 +11,7 @@ function Signup() {
     confirmPassword: ''
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -19,7 +21,8 @@ function Signup() {
       ...prevState,
       [name]: value
     }));
-    setError(''); // Clear error when user types
+    setError('');
+    setSuccess('');
   };
 
   const handleSubmit = async (e) => {
@@ -37,13 +40,26 @@ function Signup() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Data sent successfully');
+        setSuccess('Account created successfully! Redirecting to login...');
         setError('');
+        // Clear form
+        setFormData({
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        });
+        // Redirect to login after 2 seconds
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
       } else {
         setError(data.error || 'Failed to send data');
+        setSuccess('');
       }
     } catch (error) {
       setError('Error connecting to server');
+      setSuccess('');
     }
   };
 
@@ -53,6 +69,7 @@ function Signup() {
         <div className="auth-form-section">
           <h2>Sign Up</h2>
           {error && <div className="error-message">{error}</div>}
+          {success && <div className="success-message">{success}</div>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>USERNAME</label>

@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/Auth.css';
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -34,8 +35,11 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Login successful');
-        setError('');
+        // Store user info in session storage
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        
+        // Redirect to dashboard
+        navigate('/dashboard');
       } else {
         setError(data.error || 'Login failed');
       }
