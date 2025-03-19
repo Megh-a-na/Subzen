@@ -122,7 +122,7 @@ function Signup() {
         <div className="auth-welcome-section">
           <h2>Welcome Back!</h2>
           <p>Already have an account?</p>
-          <Link to="/" className="switch-auth-button">
+          <Link to="/login" className="switch-auth-button">
             Sign In
           </Link>
         </div>
