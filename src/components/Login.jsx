@@ -1,10 +1,47 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import '../styles/Auth.css';
 
 function Login() {
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+    setError('');
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Login successful');
+        setError('');
+      } else {
+        setError(data.error || 'Login failed');
+      }
+    } catch (error) {
+      setError('Error connecting to server');
+    }
   };
 
   return (
@@ -12,14 +49,37 @@ function Login() {
       <div className="auth-form-container">
         <div className="auth-form-section">
           <h2>Sign In</h2>
+          {error && <div className="error-message">{error}</div>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>USERNAME</label>
-              <input type="text" placeholder="Username" />
+              <input 
+                type="text" 
+                name="username"
+                placeholder="Username" 
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="form-group">
               <label>PASSWORD</label>
-              <input type="password" placeholder="Password" />
+              <div className="password-input-container">
+                <input 
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password" 
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                <i 
+                  className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'} password-toggle`}
+                  onMouseDown={() => setShowPassword(true)}
+                  onMouseUp={() => setShowPassword(false)}
+                  onMouseLeave={() => setShowPassword(false)}
+                ></i>
+              </div>
             </div>
             <div className="form-options">
               <label className="remember-me">
