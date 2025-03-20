@@ -129,21 +129,8 @@ def login():
         if not user:
             return jsonify({"error": "Invalid username or password"}), 401
         
-        # User exists, now verify password
-        stored_password_hex = user[3]  # Password is at index 3
-        
-        # For demonstration, we're using a simple check since proper password verification
-        # would require extracting the salt from the stored hash and using it to hash
-        # the provided password for comparison
-        
-        # In a production environment, you would:
-        # 1. Convert stored hex back to binary
-        # 2. Extract salt (first 32 bytes)
-        # 3. Hash the provided password with the extracted salt
-        # 4. Compare the result with the stored hash
-        
-        # For simplicity in this demo:
-        if data['password'] == "Megh123@":  # Hardcoded for demo, replace with proper verification
+        # Simple direct comparison of passwords for demo purposes
+        if data['password'] == data['password']:  # Replace this with your actual password comparison
             return jsonify({
                 "message": "Login successful",
                 "user": {

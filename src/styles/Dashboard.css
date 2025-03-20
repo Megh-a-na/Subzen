@@ -1,6 +1,8 @@
 .dashboard-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 0;
+  padding: 0;
 }
 
 .dashboard-header {
@@ -10,6 +12,12 @@
   background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .dashboard-header h1 {
@@ -49,7 +57,7 @@
 
 .dashboard-content {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 6rem auto 2rem;
   padding: 0 2rem;
 }
 
