@@ -58,7 +58,11 @@
 .dashboard-content {
   max-width: 1800px;
   margin: 20px auto 40px;
-  padding: 0 2rem;
+  padding: 20px;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: visible;
+  padding-right: 20px;
 }
 
 .welcome-message {
@@ -90,6 +94,7 @@
   margin-top: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .subscription-summary h3 {
@@ -331,4 +336,51 @@
 /* For any other boxes that might be added later */
 .content-box {
   margin-bottom: 40px;
+}
+
+/* Add/update these styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+/* Style the main scrollbar */
+body::-webkit-scrollbar {
+  width: 8px;
+  position: absolute;
+  right: 0;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Ensure content doesn't get hidden behind fixed header */
+.welcome-message {
+  margin-bottom: 20px;
+}
+
+.subscription-summary {
+  margin-bottom: 20px;
+}
+
+/* Keep smooth scrolling */
+html {
+  scroll-behavior: smooth;
 } 
