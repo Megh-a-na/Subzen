@@ -1,0 +1,373 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.duration-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.duration-container select {
+  flex: 1;
+}
+
+.custom-duration {
+  flex: 1;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.submit-btn,
+.cancel-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.submit-btn {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 2px solid #ff6b6b;
+}
+
+.submit-btn:hover {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+.submit-btn:active {
+  background-color: #45a049;
+  border-color: #45a049;
+  color: white;
+  transform: scale(0.98);
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.cancel-btn:hover {
+  background-color: #bb2d3b;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Style for select dropdowns to match input fields */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  max-height: 40px;
+}
+
+/* Style the input with suggestions */
+.form-group input[list] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  position: relative;
+}
+
+/* Style the datalist suggestions when they appear */
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+/* Custom styles for the datalist dropdown */
+input[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Styling for Chromium browsers */
+input[list] + datalist option {
+  font-size: 14px;
+  padding: 8px;
+  background-color: white;
+  color: #333;
+}
+
+/* Override browser default styles for the suggestion dropdown */
+input[list]::-webkit-input-placeholder {
+  color: #666;
+}
+
+/* Position and style the datalist popup */
+datalist {
+  position: absolute;
+  max-height: 200px;
+  overflow-y: auto;
+  width: calc(100% - 20px);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 2px;
+}
+
+/* Style individual options in the datalist */
+option {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  background: white;
+  cursor: pointer;
+}
+
+option:hover {
+  background-color: #f5f5f5;
+}
+
+/* Add a subtle dropdown indicator */
+.form-group input[list] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+/* Style for select elements */
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  cursor: pointer;
+}
+
+/* Style for select options */
+.form-group select option {
+  padding: 12px 8px;
+  font-size: 1rem;
+  line-height: 1.8;
+  min-height: 2.5em;
+  display: block;
+  margin: 2px 0;
+}
+
+/* Ensure proper height for dropdown items */
+.form-group select[size] {
+  height: auto;
+  max-height: 300px;
+}
+
+/* Style for option hover/focus */
+.form-group select option:hover,
+.form-group select option:focus {
+  background-color: #f5f5f5;
+  padding-bottom: 14px;
+}
+
+/* Container for subscription name input */
+.subscription-name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Custom name input styling */
+.custom-name-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+/* Style the dropdown when opened */
+select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+/* Adjust the height of the dropdown list */
+select[size] {
+  height: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Style scrollbar for the dropdown */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+select::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Cost input container styling */
+.cost-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between symbol and input */
+}
+
+.rupee-symbol {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.cost-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+/* Remove spinner buttons from number input */
+.cost-input::-webkit-outer-spin-button,
+.cost-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cost-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Style for select elements */
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  cursor: pointer;
+}
+
+/* Style for select options */
+.form-group select option {
+  padding: 12px 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 2em;
+}
+
+/* Adjust dropdown appearance */
+.form-group select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+/* Style for option hover/focus */
+.form-group select option:hover,
+.form-group select option:focus {
+  background-color: #f5f5f5;
+} 
