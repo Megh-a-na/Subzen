@@ -312,9 +312,6 @@ def get_subscriptions(user_id):
                 'created_at': sub[5]
             })
         
-        # Debug print
-        print(f"Fetched {len(subscription_list)} subscriptions for user {user_id}")
-        print("Subscriptions:", subscription_list)
         
         conn.close()
         return jsonify(subscription_list), 200
@@ -444,6 +441,53 @@ def view_subscriptions(user_id):
     except Exception as e:
         print("Error displaying subscriptions:", str(e))
         return "Error displaying subscriptions", 500
+
+@app.route('/api/subscriptions/update/<int:subscription_id>', methods=['PUT'])
+def update_subscription(subscription_id):
+    data = request.get_json()
+    
+    try:
+        # Convert cost to float and validate
+        cost = float(data['cost'])
+        if cost <= 0:
+            return jsonify({"error": "Cost must be greater than 0"}), 400
+            
+        # Round to 2 decimal places
+        cost = round(cost, 2)
+            
+        # Connect to database
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        
+        # Update subscription
+        cursor.execute('''
+        UPDATE subscriptions 
+        SET name = ?, category = ?, duration = ?, cost = ?
+        WHERE id = ?
+        ''', (data['name'], data['category'], data['duration'], cost, subscription_id))
+        
+        if cursor.rowcount == 0:
+            return jsonify({"error": "Subscription not found"}), 404
+        
+        conn.commit()
+        
+        # Print success log
+        print(f"\nSubscription {subscription_id} updated successfully:")
+        print("Name:", data['name'])
+        print("Category:", data['category'])
+        print("Duration:", data['duration'])
+        print("Cost:", cost)
+        print("-" * 50)
+        
+        conn.close()
+        
+        return jsonify({"message": "Subscription updated successfully"}), 200
+        
+    except ValueError:
+        return jsonify({"error": "Invalid cost value"}), 400
+    except Exception as e:
+        print("Error:", str(e))
+        return jsonify({"error": "An error occurred while updating subscription"}), 500
 
 # Keep this at the end of the file
 if __name__ == '__main__':

@@ -40,7 +40,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
@@ -134,4 +134,31 @@
   border-color: #45a049;
   color: white;
   transform: scale(0.98);
+}
+
+.subscription-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.edit-button:hover {
+  color: #ff6b6b;
+}
+
+.edit-button svg {
+  width: 14px;
+  height: 14px;
 } 
