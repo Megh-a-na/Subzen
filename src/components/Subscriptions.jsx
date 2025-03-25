@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
+import SubscriptionModal from './SubscriptionModal';
 import '../styles/Subscriptions.css';
 
 function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchSubscriptions = async () => {
@@ -40,10 +42,19 @@ function Subscriptions() {
     fetchSubscriptions();
   }, []);
 
+  const handleSubscriptionAdded = () => {
+    fetchSubscriptions(); // Refresh the list after adding
+  };
+
   return (
     <Layout>
       <div className="subscriptions-container">
-        <h2 className="subscriptions-heading">My Subscriptions</h2>
+        <div className="subscriptions-header">
+          <h2 className="subscriptions-heading">My Subscriptions</h2>
+          <button className="add-subscription-button" onClick={() => setIsModalOpen(true)}>
+            Add New Subscription
+          </button>
+        </div>
 
         {loading && (
           <div className="no-subscriptions">
@@ -80,6 +91,12 @@ function Subscriptions() {
             ))}
           </div>
         )}
+
+        <SubscriptionModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleSubscriptionAdded}
+        />
       </div>
     </Layout>
   );

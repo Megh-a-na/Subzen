@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 .subscriptions-container {
   padding: 20px;
   margin-top: 60px;
@@ -7,8 +9,11 @@
   color: #000000;
   text-align: center;
   margin-bottom: 30px;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
 .subscriptions-grid {
@@ -97,4 +102,36 @@
   color: #dc3545;
   text-align: center;
   padding: 20px;
+}
+
+.subscriptions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.add-subscription-button {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 2px solid #ff6b6b;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-subscription-button:hover {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+.add-subscription-button:active {
+  background-color: #45a049;
+  border-color: #45a049;
+  color: white;
+  transform: scale(0.98);
 } 
