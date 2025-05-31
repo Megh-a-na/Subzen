@@ -68,21 +68,25 @@ Key goals of the project:
 ---
 
 ## 🗂️ Project Structure
+
+```text
 Subzen/
-├── public/ # Static assets
+├── public/                         # Static assets
 ├── src/
-│ ├── components/ # Core UI components
-│ │ ├── Dashboard.jsx
-│ │ ├── Subscriptions.jsx
-│ │ ├── SubscriptionModal.jsx
-│ │ ├── EditSubscriptionModal.jsx
-│ │ ├── Login.jsx / Signup.jsx
-│ │ └── Layout.jsx / Profile.jsx / Home.jsx / Settings.jsx
-│ ├── App.jsx # Route configuration
-│ └── main.jsx # Root render
-├── app.py # Flask backend for login
-├── users.db # SQLite DB with user credentials
-├── package.json / vite.config.js # Frontend config
+│   ├── components/                 # Core UI components
+│   │   ├── Dashboard.jsx
+│   │   ├── Subscriptions.jsx
+│   │   ├── SubscriptionModal.jsx
+│   │   ├── EditSubscriptionModal.jsx
+│   │   ├── Login.jsx / Signup.jsx
+│   │   └── Layout.jsx / Profile.jsx / Home.jsx / Settings.jsx
+│   ├── App.jsx                     # Route configuration
+│   └── main.jsx                    # Root render
+├── app.py                          # Flask backend for login
+├── users.db                        # SQLite DB with user credentials
+├── package.json / vite.config.js   # Frontend config
+```
+
 
 
 ---
@@ -102,16 +106,20 @@ Subzen/
 
 ### 1. Clone the Repository
 
-``bash
+```bash
 git clone https://github.com/your-username/subzen.git
 cd subzen
+```
 
 ### 2. Install FrontEnd Dependancies
 
+```bash
 npm install
 npm run dev
+```
 
 ### 3. Run Backend (Flask)
 
+```bash
 python app.py
-
+```
