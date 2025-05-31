@@ -68,3 +68,50 @@ Key goals of the project:
 ---
 
 ## 🗂️ Project Structure
+Subzen/
+├── public/ # Static assets
+├── src/
+│ ├── components/ # Core UI components
+│ │ ├── Dashboard.jsx
+│ │ ├── Subscriptions.jsx
+│ │ ├── SubscriptionModal.jsx
+│ │ ├── EditSubscriptionModal.jsx
+│ │ ├── Login.jsx / Signup.jsx
+│ │ └── Layout.jsx / Profile.jsx / Home.jsx / Settings.jsx
+│ ├── App.jsx # Route configuration
+│ └── main.jsx # Root render
+├── app.py # Flask backend for login
+├── users.db # SQLite DB with user credentials
+├── package.json / vite.config.js # Frontend config
+
+
+---
+
+## 🔮 Future Scope
+
+- Budget analysis with dynamic graphs
+- Email reminders before due dates
+- Cloud-based user sync (MongoDB/Firebase)
+- Multi-user support with role-based permissions
+- Mobile-first design enhancements
+- Subscription categorization (e.g., Entertainment, Productivity)
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone the Repository
+
+``bash
+git clone https://github.com/your-username/subzen.git
+cd subzen
+
+### 2. Install FrontEnd Dependancies
+
+npm install
+npm run dev
+
+### 3. Run Backend (Flask)
+
+python app.py
+
